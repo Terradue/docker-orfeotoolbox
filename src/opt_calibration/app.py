@@ -2,6 +2,8 @@ import os
 import sys
 import logging
 import click
+from .optcal import otb_opt_calibration
+from .stac import get_item
 
 logging.basicConfig(stream=sys.stderr, 
                     level=logging.DEBUG,
@@ -11,14 +13,13 @@ logging.basicConfig(stream=sys.stderr,
 
 @click.command()
 @click.option('--input_reference', '-i', 'input_reference', help='')
-@click.option('--aoi', '-a', 'aoi', help='')
-def main(input_reference, aoi):
+def main(input_reference):
 
     logging.info('Hello World!')
 
     item = get_item(os.path.join(input_reference, 'catalog.json')) 
     
-    
+    otb_opt_calibration(item, 'red')
     
     
 if __name__ == '__main__':
