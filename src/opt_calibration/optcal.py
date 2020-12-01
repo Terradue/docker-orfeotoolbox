@@ -1,5 +1,5 @@
 from urllib.parse import urlparse
-from pystac import extensions
+from pystac import *
 import otbApplication
 
 def fix_asset_href(uri):
@@ -109,11 +109,13 @@ def otb_opt_calibration(item, common_band_name, level='toa'):
 
     app.SetParameterString('atmo.aerosol', 'noaersol')
 
-    app.SetParameterString('out', f'{common_band_name}.tif')
+    app.SetParameterString('out', '{}.tif'.format(common_band_name))
 
     app.SetParameterString("milli", '0')
     app.SetParameterString("clamp", '0')
 
+    #app.SetParameterOutputImagePixelType("out", otbApplication.ImagePixelType_int16)
+    
     app.ExecuteAndWriteOutput()
 
-    return f'{common_band_name}.tif'
+    return '{}.tif'.format(common_band_name)

@@ -15,7 +15,9 @@ logging.basicConfig(stream=sys.stderr,
 @click.option('--input_reference', '-i', 'input_reference', help='')
 def main(input_reference):
 
-    logging.info('Hello World!')
+    os.environ['PROJ_LIB'] = '/opt/anaconda/envs/env_opt_calibration/conda-otb/share/proj/'
+    
+    logging.info(os.path.join(input_reference, 'catalog.json'))
 
     item = get_item(os.path.join(input_reference, 'catalog.json')) 
     
