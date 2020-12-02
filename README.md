@@ -1,76 +1,40 @@
-# opt-calibration - Optical calibration
+# Orfeo ToolBox (OTB) docker container
 
-Optical calibration
+## Build
 
-## Development 
-
-```bash
-cd opt_calibration
+```console
+docker build -f .docker/Dockerfile -t otb-7.2.0
 ```
 
-```bash
-conda env create -f environment.yml
+## Run
+
+Bash console
+
+```console
+docker run --rm -it otb-7.2.0:latest bash
 ```
 
-Activate the conda environment
+OTB cli applications are available in PATH.
 
-```bash
-conda activate  env_opt_calibration
+Python 
+
+```console
+docker run --rm -it otb-7.2.0:latest bash
 ```
 
-To build and install the project locally:
+then
 
-```
-python setup.py install
-```
-
-Test the CLI with:
-
-```bash
-opt-calibration --help
+```console
+python
 ```
 
-## Building the docker image
-
-Build the docker image with:
-
-```bash
-docker build -t opt_calibration:0.1  -f .docker/Dockerfile .
+```python
+import otbApplication
+import gdal
 ```
 
-or for pushing to the `terradue` docker repository:
+## Extend the conda environment
 
-```bash
-docker build -t terradue/opt_calibration:0.1  -f .docker/Dockerfile .
-```
-
-Test the CLI with:
-
-```bash
-docker run --rm -it opt_calibration:0.1 opt-calibration --help
-```
-
-or 
-
-```bash
-docker run --rm -it terradue/opt_calibration:0.1 opt-calibration --help
-```
-
-## Creating the CWL
-
-Check the examples provided in the `cwl-examples` folder and adapt one to the application requirements
-
-## Setting up the git repository
-
-```bash
-git init
-git remote add origin <git repository URL>
-```
-
-Once you're ready to add, commit and push, do:
-
-```bash
-git add -A
-git commit -m 'first commit'
-git push -u origin master
+```console
+conda install -n env_otb <some package>
 ```

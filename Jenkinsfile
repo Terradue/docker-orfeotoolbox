@@ -1,4 +1,4 @@
-def dockerTag = 'docker.terradue.com/opt_calibration'
+def dockerTag = 'terradue/otb'
 def dockerNewVersion = 0.1
 
 pipeline {

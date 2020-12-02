@@ -17,7 +17,7 @@ ENV NB_USER=jovyan \
     LANG=en_US.UTF-8 \
     LANGUAGE=en_US.UTF-8 \
     CONDA_DIR=/opt/anaconda \
-    NB_PYTHON_PREFIX=/opt/anaconda/envs/env_opt_calibration 
+    NB_PYTHON_PREFIX=/opt/anaconda/envs/env_otb
     
 ENV USER=${NB_USER} \
     NB_UID=${NB_UID} \
@@ -48,8 +48,6 @@ USER ${NB_USER}
 
 # workdir for binder
 COPY --chown=jovyan:100 . ${HOME}
-
-RUN cd ${HOME} && ${NB_PYTHON_PREFIX}/bin/python setup.py install
 
 ENV PREFIX ${NB_PYTHON_PREFIX}
 
