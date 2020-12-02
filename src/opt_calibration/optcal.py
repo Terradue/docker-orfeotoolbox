@@ -117,6 +117,8 @@ def otb_opt_calibration(item, common_band_name, level='toa'):
     
     asset, asset_href = get_asset(item, 'red')
     
+    get_calibration_parameter(asset)
+    
     app = otbApplication.Registry.CreateApplication('OpticalCalibration')
 
     app.SetParameterString('in', asset_href)
@@ -156,6 +158,9 @@ def otb_opt_calibration(item, common_band_name, level='toa'):
             '{}.tif'.format(common_band_name))
     
     os.remove('f_{}.tif'.format(common_band_name))
+    
+    os.remove('gainbias.txt')
+    os.remove('solarillumination.txt')
     
     return '{}.tif'.format(common_band_name)
 
