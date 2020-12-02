@@ -1,9 +1,15 @@
 # Orfeo ToolBox (OTB) docker container
 
-## Build
+## Get the docker 
 
 ```console
-docker build -f .docker/Dockerfile -t otb-7.2.0
+docker pull terradue/otb-7.2.0
+```
+
+Run a container: 
+
+```console
+docker run --rm -it terradue/otb-7.2.0:latest bash
 ```
 
 ## Run
@@ -37,4 +43,12 @@ import gdal
 
 ```console
 conda install -n env_otb <some package>
+```
+
+## Build
+
+Clone this repo and: 
+
+```console
+docker build -f .docker/Dockerfile -t otb-7.2.0
 ```
