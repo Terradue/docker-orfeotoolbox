@@ -9,10 +9,10 @@ pipeline {
                 script {
                     def app = docker.build(dockerTag, "-f .docker/Dockerfile .")
                     def mType=getTypeOfVersion(env.BRANCH_NAME)
-                    #docker.withRegistry('https://registry.hub.docker.com', 'docker-terradue') {
-                    #  app.push("${mType}${dockerNewVersion}")
-                    #  app.push("${mType}latest")
-                    #}
+  //                  docker.withRegistry('https://registry.hub.docker.com', 'docker-terradue') {
+  //                   app.push("${mType}${dockerNewVersion}")
+  //                    app.push("${mType}latest")
+  //                  }
                 }
             }
         }
