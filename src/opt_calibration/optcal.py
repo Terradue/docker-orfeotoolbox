@@ -1,4 +1,5 @@
 import os
+os.environ['LD_LIBRARY_PATH'] = '/opt/anaconda/envs/env_opt_calibration/lib'
 from urllib.parse import urlparse
 from pystac import *
 import otbApplication
@@ -7,6 +8,10 @@ import logging
 import sys 
 import numpy as np
 from time import sleep
+
+os.environ['PROJ_LIB'] = os.path.join(os.environ['PREFIX'], 
+                                          'conda-otb/share/proj/' )
+    
 
 logging.basicConfig(stream=sys.stderr, 
                     level=logging.DEBUG,
@@ -49,9 +54,9 @@ def get_asset(item, band_name):
     
     # Get bands
     if (eo_item.bands) is not None:
-        print('in')
+  
         for index, band in enumerate(eo_item.bands):
-            #print(index, band, band.common_name, band.name) # eg --> 1 <Band name=B02> blue B02
+
             if band.common_name in [band_name]: 
                 asset = item.assets[band.name]
                 asset_href = fix_asset_href(asset.get_absolute_href())
@@ -104,6 +109,11 @@ def get_sun_azimuth(item):
     return get_item_property(item, 'view:sun_azimuth')
 
 def otb_opt_calibration(item, common_band_name, level='toa'):
+    
+    os.environ['PROJ_LIB'] = os.path.join(os.environ['PREFIX'], 
+                                          'conda-otb/share/proj/')
+    
+    logging.info(os.environ['PROJ_LIB'])
     
     asset, asset_href = get_asset(item, 'red')
     

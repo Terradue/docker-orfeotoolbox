@@ -51,8 +51,17 @@ COPY --chown=jovyan:100 . ${HOME}
 
 RUN cd ${HOME} && ${NB_PYTHON_PREFIX}/bin/python setup.py install
 
-ENV PREFIX /opt/anaconda/envs/${NB_PYTHON_PREFIX}
+ENV PREFIX ${NB_PYTHON_PREFIX}
 
-ENV PATH /opt/anaconda/envs/${NB_PYTHON_PREFIX}/bin:$PATH
+ENV PATH ${NB_PYTHON_PREFIX}/bin:$PATH
+
+ENV CMAKE_PREFIX_PATH=${NB_PYTHON_PREFIX}/conda-otb \
+    PYTHONPATH=${NB_PYTHON_PREFIX}/conda-otb/lib/python \
+    GDAL_DATA=${NB_PYTHON_PREFIX}/conda-otb/share/gdal \
+    PROJ_LIB=${NB_PYTHON_PREFIX}/conda-otb/share/proj \
+    LC_NUMERIC=C \
+    OTB_APPLICATION_PATH=${NB_PYTHON_PREFIX}/conda-otb/lib/otb/applications \
+    LD_LIBRARY_PATH=/opt/anaconda/envs/env_opt_calibration/lib \
+    PATH=${NB_PYTHON_PREFIX}/conda-otb/bin:$PATH
 
 WORKDIR ${HOME}

@@ -1,4 +1,5 @@
 import os
+os.environ['LD_LIBRARY_PATH'] = '/usr/lib64'
 import sys
 import logging
 import click
@@ -18,7 +19,9 @@ logging.basicConfig(stream=sys.stderr,
 @click.option('--input_reference', '-i', 'input_reference', help='')
 def main(input_reference):
 
-    os.environ['PROJ_LIB'] = '/opt/anaconda/envs/env_opt_calibration/conda-otb/share/proj/'
+    os.environ['LD_LIBRARY_PATH'] = '/usr/lib64'
+    os.environ['PROJ_LIB'] = os.path.join(os.environ['PREFIX'], 
+                                          'conda-otb/share/proj/' )
     
     logging.info(os.path.join(input_reference, 'catalog.json'))
 
