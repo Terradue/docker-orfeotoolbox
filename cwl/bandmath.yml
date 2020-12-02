@@ -1,0 +1,5 @@
+image_list:
+- /vsicurl/https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/53/H/PA/2019/10/S2B_53HPA_20191012_0_L2A/B08.tif
+- /vsicurl/https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/53/H/PA/2019/10/S2B_53HPA_20191012_0_L2A/B04.tif
+expression: "(im1b1 - im2b1) / (im1b1 + im2b1)"
+result: ndvi.tif
