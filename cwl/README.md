@@ -2,7 +2,7 @@
 
 This is a simple example demonstrating how useful this OTB docker image can be.
 
-The example does a simple band math with thwo Sentinel-2 bands.
+The example does a simple band math with two Sentinel-2 bands.
 
 To run the example you need cwltool (see here how to install it https://github.com/common-workflow-language/cwltool) and docker then do:
 
