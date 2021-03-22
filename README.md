@@ -39,6 +39,14 @@ import otbApplication
 import gdal
 ```
 
+## Using an OTB Cli application with local data
+
+Launch the docker image with a mounted volume pointing to the current folder:
+```
+docker run --rm -it -v $PWD:/data terradue/otb-7.2.0:latest otbcli_ReadImageInfo -in /data/swir22.tif
+```
+
+
 ## Extend the conda environment
 
 ```console
