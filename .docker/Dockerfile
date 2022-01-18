@@ -1,7 +1,7 @@
 FROM centos:7
 
 
-MAINTAINER Terradue S.r.l
+LABEL maintainer="Terradue S.r.l"
 USER root
 
 ## yum
@@ -47,7 +47,7 @@ RUN chown -R $NB_USER:$NB_GID ${HOME}
 USER ${NB_USER}
 
 # workdir for binder
-COPY --chown=jovyan:100 . ${HOME}
+COPY --chown=${NB_USER}:${NB_GID} . ${HOME}
 
 ENV PREFIX ${NB_PYTHON_PREFIX}
 
